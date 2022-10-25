@@ -106,16 +106,12 @@ class QuizController extends GetxController {
   }
 
   finishQuiz(BuildContext context) {
-    displayDialog(context);
-  }
-
-  displayDialog(BuildContext context) {
     showAnimatedDialog(
         context: context,
         barrierDismissible: true,
         animationType: DialogTransitionType.slideFromBottom,
         curve: Curves.fastOutSlowIn,
-        duration: Duration(milliseconds: 700),
+        duration: const Duration(milliseconds: 700),
         builder: (c) {
           return const FinishQuizDialog();
         });
