@@ -11,43 +11,41 @@ class FinishQuizDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<QuizController>(
-        initState: (controller) {},
-        builder: (controller) {
-          return AlertDialog(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4.w))),
-            content: Container(
-              height: 30.h,
-              child: Column(
-                children: [
-                  SvgPicture.asset('assets/icons/love1.svg',
-                      height: 10.h, color: Theme.of(context).primaryColor),
-                  SizedBox(height: 2.h),
-                  Text(
-                    "Hey Sweetie, Your score is: ${controller.score}/10",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 11.sp,
-                      fontFamily: "Muli",
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(height: 2.h),
-                  MainButton(
-                    title: "Finish",
-                    callback: () async {
-                      Navigator.pop(context);
-                      Get.offAll(() => Home(),
-                          duration: const Duration(milliseconds: 1000),
-                          transition: Transition.circularReveal);
-                    },
-                  )
-                ],
+    return GetBuilder<QuizController>(builder: (controller) {
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4.w))),
+        content: Container(
+          height: 30.h,
+          child: Column(
+            children: [
+              SvgPicture.asset('assets/icons/love1.svg',
+                  height: 10.h, color: Theme.of(context).primaryColor),
+              SizedBox(height: 2.h),
+              Text(
+                "Hey Sweetie, Your score is: ${controller.score}/10",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 11.sp,
+                  fontFamily: "Muli",
+                  color: Colors.black,
+                ),
               ),
-            ),
-          );
-        });
+              SizedBox(height: 2.h),
+              MainButton(
+                title: "Finish",
+                callback: () async {
+                  Navigator.pop(context);
+                  Get.offAll(() => Home(),
+                      duration: const Duration(milliseconds: 1000),
+                      transition: Transition.circularReveal);
+                },
+              )
+            ],
+          ),
+        ),
+      );
+    });
   }
 }

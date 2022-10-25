@@ -19,7 +19,7 @@ List<QuizQuestions> contents = [
       b: 'ipsum dolo',
       c: 'sit ipsum',
       d: 'dolor sit',
-      ans: 1),
+      ans: 4),
   QuizQuestions(
       question: 'Lorem ipsum dolor sit ipsum amet?',
       a: 'Lorem ipsum',

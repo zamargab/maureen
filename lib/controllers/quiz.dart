@@ -87,18 +87,12 @@ class QuizController extends GetxController {
   }
 
   proceedToNext(int questionIndex) {
-    if (isA) {
-      if (contents[questionIndex].ans == 1) {
-        score++;
-      }
-    } else if (isB) {
-      if (contents[questionIndex].ans == 2) {
-        score++;
-      }
-    } else if (isC) {
-      if (contents[questionIndex].ans == 3) {
-        score++;
-      }
+    if (isA && contents[questionIndex].ans == 1) {
+      score++;
+    } else if (isB && contents[questionIndex].ans == 2) {
+      score++;
+    } else if (isC && contents[questionIndex].ans == 3) {
+      score++;
     } else {
       if (contents[questionIndex].ans == 4) {
         score++;

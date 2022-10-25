@@ -10,12 +10,10 @@ class MessageDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MessageDetailController>(
-        initState: (controller) {},
-        builder: (controller) {
-          return Scaffold(
-              appBar: const MyAppBar2('Maureen Olah'),
-              body: controller.buildChild());
-        });
+    return GetBuilder<MessageDetailController>(builder: (controller) {
+      return Scaffold(
+          appBar: const MyAppBar2('Maureen Olah'),
+          body: controller.buildChild());
+    });
   }
 }

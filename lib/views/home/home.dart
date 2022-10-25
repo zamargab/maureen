@@ -23,140 +23,133 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-        initState: (controller) {},
-        builder: (controller) {
-          return Scaffold(
-            appBar: const MyAppBar('Maureen Olah'),
-            body: SafeArea(
-              child: Stack(
+    return GetBuilder<HomeController>(builder: (controller) {
+      return Scaffold(
+        appBar: const MyAppBar('Maureen Olah'),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      CarouselSlider(
-                        options: CarouselOptions(
-                          height: 40.h,
-                          enlargeCenterPage: true,
-                          autoPlay: true,
-                          autoPlayInterval: Duration(seconds: 5),
-                          autoPlayAnimationDuration:
-                              const Duration(milliseconds: 1000),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          pauseAutoPlayOnTouch: true,
-                          onPageChanged: (index, reason) {
-                            controller.currentIndex = index;
-                            controller.update();
-                          },
-                        ),
-                        items: controller.cardList.map((card) {
-                          return Builder(builder: (BuildContext context) {
-                            return SizedBox(
-                              height: 30.h,
-                              width: 100.w,
-                              child: Card(
-                                color: Theme.of(context).primaryColor,
-                                child: card,
-                              ),
-                            );
-                          });
-                        }).toList(),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(4.w),
-                        height: 47.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(0.3),
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(5.w),
-                              topLeft: Radius.circular(5.w)),
-                        ),
-                        child: Column(
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 40.h,
+                      enlargeCenterPage: true,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 5),
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 1000),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      pauseAutoPlayOnTouch: true,
+                      onPageChanged: (index, reason) {
+                        controller.currentIndex = index;
+                        controller.update();
+                      },
+                    ),
+                    items: controller.cardList.map((card) {
+                      return Builder(builder: (BuildContext context) {
+                        return SizedBox(
+                          height: 30.h,
+                          width: 100.w,
+                          child: Card(
+                            color: Theme.of(context).primaryColor,
+                            child: card,
+                          ),
+                        );
+                      });
+                    }).toList(),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(4.w),
+                    height: 47.h,
+                    width: 100.w,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withOpacity(0.3),
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(5.w),
+                          topLeft: Radius.circular(5.w)),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                HomeBox(
-                                  color: const Color(0xFFff969b),
-                                  svg: 'assets/icons/love2.svg',
-                                  title: 'Messages',
-                                  callback: () {
-                                    Get.to(() => const MessageHome(),
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        transition: Transition.circularReveal);
-                                  },
-                                ),
-                                HomeBox(
-                                  color: const Color(0xFFe0d4f1),
-                                  svg: 'assets/icons/birds.svg',
-                                  title: 'Quiz',
-                                  callback: () {
-                                    Get.to(() => QuizHome(),
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        transition: Transition.circularReveal);
-                                  },
-                                ),
-                              ],
+                            HomeBox(
+                              color: const Color(0xFFff969b),
+                              svg: 'assets/icons/love2.svg',
+                              title: 'Messages',
+                              callback: () {
+                                Get.to(() => const MessageHome(),
+                                    duration: const Duration(milliseconds: 500),
+                                    transition: Transition.circularReveal);
+                              },
                             ),
-                            SizedBox(height: 2.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                HomeBox(
-                                  color: const Color(0xFFffbab9),
-                                  svg: 'assets/icons/mugs.svg',
-                                  title: 'Poems',
-                                  callback: () {
-                                    Get.to(() => PoemsHome(),
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        transition: Transition.circularReveal);
-                                  },
-                                ),
-                                HomeBox(
-                                  color: const Color(0xFFffa5c9),
-                                  svg: 'assets/icons/banner.svg',
-                                  title: 'Memories',
-                                  callback: () {
-                                    Get.to(() => Memories(),
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        transition: Transition.circularReveal);
-                                  },
-                                ),
-                              ],
-                            )
+                            HomeBox(
+                              color: const Color(0xFFe0d4f1),
+                              svg: 'assets/icons/birds.svg',
+                              title: 'Quiz',
+                              callback: () {
+                                Get.to(() => QuizHome(),
+                                    duration: const Duration(milliseconds: 500),
+                                    transition: Transition.circularReveal);
+                              },
+                            ),
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                  AnimatedBackground(
-                    behaviour: RandomParticleBehaviour(
-                        options: ParticleOptions(
-                      baseColor: Colors.blue,
-                      spawnOpacity: 0.01,
-                      opacityChangeRate: 0.25,
-                      minOpacity: 0.1,
-                      maxOpacity: 0.4,
-                      spawnMinSpeed: 30.0,
-                      spawnMaxSpeed: 70.0,
-                      spawnMinRadius: 7.0,
-                      spawnMaxRadius: 15.0,
-                      particleCount: 70,
-                      image: Image.asset('assets/images/love1.png'),
-                    )),
-                    vsync: this,
-                    child: Container(),
-                  ),
+                        SizedBox(height: 2.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            HomeBox(
+                              color: const Color(0xFFffbab9),
+                              svg: 'assets/icons/mugs.svg',
+                              title: 'Poems',
+                              callback: () {
+                                Get.to(() => PoemsHome(),
+                                    duration: const Duration(milliseconds: 500),
+                                    transition: Transition.circularReveal);
+                              },
+                            ),
+                            HomeBox(
+                              color: const Color(0xFFffa5c9),
+                              svg: 'assets/icons/banner.svg',
+                              title: 'Memories',
+                              callback: () {
+                                Get.to(() => Memories(),
+                                    duration: const Duration(milliseconds: 500),
+                                    transition: Transition.circularReveal);
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
-            ),
-          );
-        });
+              AnimatedBackground(
+                behaviour: RandomParticleBehaviour(
+                    options: ParticleOptions(
+                  baseColor: Colors.blue,
+                  spawnOpacity: 0.01,
+                  opacityChangeRate: 0.25,
+                  minOpacity: 0.1,
+                  maxOpacity: 0.4,
+                  spawnMinSpeed: 30.0,
+                  spawnMaxSpeed: 70.0,
+                  spawnMinRadius: 7.0,
+                  spawnMaxRadius: 15.0,
+                  particleCount: 70,
+                  image: Image.asset('assets/images/love1.png'),
+                )),
+                vsync: this,
+                child: Container(),
+              ),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }
 

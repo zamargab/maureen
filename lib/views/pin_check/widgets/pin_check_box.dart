@@ -12,29 +12,26 @@ class PinCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<PinCheckController>(
-        initState: (controller) {},
-        builder: (controller) {
-          return InkWell(
-            onTap: callback,
-            child: Container(
-              height: 9.h,
-              width: 9.h,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey)),
-              child: Center(
-                child: Text(
-                  number,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Colors.black),
-                ),
-              ),
+    return GetBuilder<PinCheckController>(builder: (controller) {
+      return InkWell(
+        onTap: callback,
+        child: Container(
+          height: 9.h,
+          width: 9.h,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle, border: Border.all(color: Colors.grey)),
+          child: Center(
+            child: Text(
+              number,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .copyWith(color: Colors.black),
             ),
-          );
-        });
+          ),
+        ),
+      );
+    });
   }
 }
 
